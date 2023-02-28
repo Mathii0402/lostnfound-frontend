@@ -33,7 +33,7 @@ const DUMMY_DATA = [
      const [expenses, setExpenses] = useState();
 
       const fetchdata=()=>{
-        return fetch('http://localhost:3002/api/v1/expenses')
+        return fetch('https://lostnfound-api-backend.onrender.com/api/v1/expenses')
          .then((res)=>{
            return res.json()
          })
@@ -57,7 +57,7 @@ const DUMMY_DATA = [
         expense.name = new_expense.name;
         expense.desc = new_expense.desc;
         console.log("hi",expense); 
-        fetch('http://localhost:3002/api/v1/expenses',
+        fetch('https://lostnfound-api-backend.onrender.com/api/v1/expenses',
         {
           method:"POST",
           body:JSON.stringify({expense})
