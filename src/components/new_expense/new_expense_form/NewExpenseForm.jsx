@@ -56,7 +56,7 @@ const NewExpenseForm = (props) => {
                 </div>
                 <div className="new-expense__control">
                     <label>Description</label>
-                    <input type="text" placeholder="kuriyeedu" value ={enteredTitle} onChange={onTitleChangehandler}/>
+                    <input type="text" placeholder="describe about the object" value ={enteredTitle} onChange={onTitleChangehandler}/>
                 </div>
                 <div className="new-expense__control">
                     <label>Mobile Number</label>
@@ -69,7 +69,7 @@ const NewExpenseForm = (props) => {
             </div>
             <div className="new-expense__actions">
                 <button onClick={props.onCancel}>Cancel</button>
-                <button type="submit">Add Expense</button>
+                <button type="submit">Add Lost Items</button>
             </div>
         </form>
     )
