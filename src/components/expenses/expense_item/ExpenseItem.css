@@ -6,8 +6,18 @@
     padding: 0.5rem;
     margin: 1rem 0;
     border-radius: 12px;
-    background-color: #4b4b4b;
+    background-color: #eae8e8;
     height: 5pc;
+    /* From https://css.glass */
+/* From https://css.glass */
+background: rgba(59, 58, 58, 0.73);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.2px);
+-webkit-backdrop-filter: blur(6.2px);
+border: 1px solid rgba(59, 58, 58, 0.07);
+
+
   }
   .expense-item:hover
   {
@@ -38,6 +48,7 @@
     justify-content: space-between;
     flex: 1;
     height: 5pc;
+    
   }
 
   .expense-item h2 {
