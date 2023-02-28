@@ -1,6 +1,7 @@
 .expenses-list {
     list-style: none;
     padding: 0;
+
   }
   
   .expenses-list__fallback {
@@ -10,4 +11,11 @@
   .ico{
     width: 65px;
     height: 65px;
+  }
+  .expense-item
+  {
+    display: flex;
+    /* align-content: space-around; */
+    justify-content: space-around;
+    
   }

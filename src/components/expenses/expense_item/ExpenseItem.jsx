@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import './ExpenseItem.css';
 import ExpenseDate from "../expense_date/ExpenseDate";
 import Card from "../../ui/Card";
@@ -8,12 +8,12 @@ const ExpenseItem = (props = {}) => {
     // const expense = 'March month spending';
     // const amount_spend = 245;
     const { date, title, amount,name,desc,place} = props;
-
-    // const  [title, setTitle] = useState(expense);
-    // const clickHandler = () => {
-    //    setTitle('updated !!');
-    //    // console.log(title, expense);
-    // };
+    
+     const  [find, setFind] = useState(false);
+    const clickHandler = () => {
+       setFind('found');
+       // console.log(title, expense);
+    };
 
    return (
     
@@ -45,13 +45,15 @@ const ExpenseItem = (props = {}) => {
                 <div><h2> {amount} </h2></div>
             </div>
             <div className="inline">
-                <div><label htmlFor="">Mobile Number:</label></div>
+                <div><label htmlFor="">Place:</label></div>
                 <div><h2> {place} </h2></div>
+            </div >
+            <div className="inline">
+            <button onClick={clickHandler}>Found? 🔎</button>
             </div>
-
-              
+            
            </div>
-           {/* <button onClick={clickHandler}>Update Title</button> */}
+           
        </Card>
    )
 }
