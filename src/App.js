@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import './App.css';
 import Expenses from './components/expenses/Expenses';
 import NewExpense from './components/new_expense/NewExpense';
-
+import svg from "./components/img/icon.svg"
 const DUMMY_DATA = [
   {
     id: 'e1',
@@ -72,6 +72,7 @@ const DUMMY_DATA = [
       // }
   return (
     <div className="App">
+      <img src={svg}></img>
        <NewExpense onAddNewExpense={onAddExpense} />
        <Expenses expenses={expenses} />
     </div>

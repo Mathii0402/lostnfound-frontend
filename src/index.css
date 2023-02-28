@@ -12,7 +12,7 @@ html {
 body {
   margin: 0;
   background-color: #ffffff;
-  background-image: url('./components/img/layer.svg');
+  background-image: url('./components/img/bg.svg');
   background-repeat: no-repeat;
 
 }
