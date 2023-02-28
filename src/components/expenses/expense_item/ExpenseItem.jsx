@@ -17,10 +17,10 @@ const ExpenseItem = (props = {}) => {
 
    return (
     
-       <Card className="expense-item">
+       <Card >
 
            {/* <ExpenseDate  date={date} /> */}
-           <div className="expense-item__description">
+           <div className="expense-item">
             <div className="inline">
                 <div className="">
                     <label htmlFor="">Name:</label>
