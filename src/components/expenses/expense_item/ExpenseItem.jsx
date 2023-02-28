@@ -16,14 +16,36 @@ const ExpenseItem = (props = {}) => {
     // };
 
    return (
+    
        <Card className="expense-item">
+
            {/* <ExpenseDate  date={date} /> */}
            <div className="expense-item__description">
-                <h2>Name:{name}</h2><br />
-               <h2>Lost object: {desc} </h2><br />
-               <h2>Desc:{title}</h2><br />
-               <h2>Lost date:{date}</h2><br />
-               <div className="expense-item__price">+91 {amount}</div>
+            <div className="inline">
+                <div className="">
+                    <label htmlFor="">Name:</label>
+                </div>
+                <div>
+                <h2>{name}</h2></div>
+            </div>
+            <div className="inline">
+                <div><label htmlFor="">Lost object:</label></div>
+                <div><h2> {desc} </h2></div>
+            </div>
+            <div className="inline">
+                <div><label htmlFor="">Desc:</label></div>
+                <div><h2> {title} </h2></div>
+            </div>
+            <div className="inline">
+                <div><label htmlFor="">Lost Date:</label></div>
+                <div><h2> {date} </h2></div>
+            </div>
+            <div className="inline">
+                <div><label htmlFor="">Mobile Number:</label></div>
+                <div><h2> {amount} </h2></div>
+            </div>
+
+              
            </div>
            {/* <button onClick={clickHandler}>Update Title</button> */}
        </Card>

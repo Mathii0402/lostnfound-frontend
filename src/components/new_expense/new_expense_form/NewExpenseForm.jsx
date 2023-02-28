@@ -45,6 +45,7 @@ const NewExpenseForm = (props) => {
     return (
         <form onSubmit={onFormSubmit}>
             <div className="new-expense__controls">
+           
                 <div className="new-expense__control">
                     <label>Lost Object</label>
                     <input type="text" value ={enteredObj} onChange={onObjChangehandler}/>

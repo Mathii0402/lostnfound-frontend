@@ -12,6 +12,13 @@ const ExpensesList = (props) => {
 
    return (
         <ul className="expenses-list">
+                  <div  className="expense-item-1">
+                    <h2>Name</h2>
+                    <h2>Lost Object</h2>
+                    <h2>About Object</h2>
+                    <h2>Date of Lost</h2>
+                    <h2>Mobile Number</h2>
+                  </div>
             {
                 items.map(each_expense => (
                     <ExpenseItem
