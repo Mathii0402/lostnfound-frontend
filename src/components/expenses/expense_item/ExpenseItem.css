@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 .expense-item {
     display: flex;
     justify-content: space-between;
@@ -7,6 +8,7 @@
     margin: 1rem 0;
     border-radius: 12px;
     background-color: #eae8e8;
+    font-family:'Courier New', Courier, monospace;  
     height: 5pc;
     /* From https://css.glass */
 /* From https://css.glass */
@@ -30,12 +32,21 @@ border: 1px solid rgba(59, 58, 58, 0.07);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
     padding: 0.5rem;
     margin: 1rem 0;
-    border-radius: 12px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-color: white;
+    font-family: 'Roboto Mono', monospace;
+ 
+    /* From https://css.glass */
+/* From https://css.glass */
+background: rgba(34, 34, 34, 0.9);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(9.5px);
+-webkit-backdrop-filter: blur(9.5px);
+border: 1px solid rgba(34, 34, 34, 0.3);
+color: aliceblue;
+font-size: 10px;
   }
   
   .expense-item__description {
