@@ -11,5 +11,8 @@ html {
 
 body {
   margin: 0;
-  background-color: #3f3f3f;
+  background-color: #ffffff;
+  background-image: url('./components/img/layer.svg');
+  background-repeat: no-repeat;
+
 }
