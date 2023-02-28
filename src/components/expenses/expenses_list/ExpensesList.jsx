@@ -1,12 +1,13 @@
 import React from "react";
 import ExpenseItem from "../expense_item/ExpenseItem";
 import './ExpensesList.css';
+import icon from "../../img/search.gif"
 const ExpensesList = (props) => {
 
   const {items} = props;
     if (items.length === 0 || !items) {
      return (
-        <h2 className="expenses-list__fallback">🔎</h2>
+        <h2 className="expenses-list__fallback"><img class="ico"src={icon}></img></h2>
      );
     }
 
