@@ -48,7 +48,7 @@ const DUMMY_DATA = [
           fetchdata();
        },[])
        const onAddExpense = (new_expense) => {  
-        console.log(new_expense);
+        
         let expense ={};
         // "title": "laptop", "amount":6384089068, "date": "12102020", "name":"boobes","desc":"acer aspire"
         expense.title = new_expense.title;
@@ -56,13 +56,8 @@ const DUMMY_DATA = [
         // expense.date = new_expense.date;
         expense.name = new_expense.name;
         expense.desc = new_expense.desc;
-        console.log("hi",expense); 
-        fetch('https://lostnfound-api-backend.onrender.com/api/v1/expenses',
-        {
-          method:"POST",
-          body:JSON.stringify({expense})
-        }
-        )
+
+        
         setExpenses((prev) =>{
           return [expense,...prev];
         });

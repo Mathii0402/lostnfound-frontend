@@ -27,7 +27,7 @@ const NewExpenseForm = (props) => {
             // date: new Date(enteredDate),
             date: "10.10.2022"
         }
-        Axios.post("http://localhost:3002/api/v1/expenses",
+        Axios.post("https://lostnfound-api-backend.onrender.com/api/v1/expenses",
             new_expense
     )
         .then(res=>console.log("posted",res)).catch(err=> console.log("errorr",err));

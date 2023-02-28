@@ -20,9 +20,9 @@ const ExpenseItem = (props = {}) => {
            {/* <ExpenseDate  date={date} /> */}
            <div className="expense-item__description">
                 <h2>Name:{name}</h2><br />
-               <h2>Lost object: {title} </h2><br />
-               <h2>Desc:{desc}</h2><br />
-               {/* <h2>Lost date:{date}</h2><br /> */}
+               <h2>Lost object: {desc} </h2><br />
+               <h2>Desc:{title}</h2><br />
+               <h2>Lost date:{date}</h2><br />
                <div className="expense-item__price">+91 {amount}</div>
            </div>
            {/* <button onClick={clickHandler}>Update Title</button> */}
