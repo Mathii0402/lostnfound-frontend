@@ -1,9 +1,18 @@
 .expenses-list {
     list-style: none;
     padding: 0;
+
   }
   
   .expenses-list__fallback {
     color: white;
     text-align: center;
+  }
+
+  .expense-item
+  {
+    display: flex;
+    /* align-content: space-around; */
+    justify-content: space-around;
+    
   }
