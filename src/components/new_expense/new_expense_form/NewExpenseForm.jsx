@@ -8,6 +8,7 @@ const NewExpenseForm = (props) => {
     const [enteredDate, setEnteredDate] = useState('');
     const [enteredObj, setEnteredObj] = useState('');
     const [enteredName, setEnteredName] = useState('');
+    const [enteredPlace, setEnteredPlace] = useState('');
 
 
     const onTitleChangehandler = (event) => setEnteredTitle(event.target.value);
@@ -15,6 +16,7 @@ const NewExpenseForm = (props) => {
     const onDateChangehandler = (event) => setEnteredDate(event.target.value);
     const onObjChangehandler = (event) => setEnteredObj(event.target.value);
     const onNameChangehandler = (event) => setEnteredName(event.target.value);
+    const onPlaceChangehandler = (event) => setEnteredPlace(event.target.value);
 
     const onFormSubmit = (event) => { 
         event.preventDefault();
@@ -24,8 +26,9 @@ const NewExpenseForm = (props) => {
             amount: enteredAmount,
             desc:enteredObj,
             name:enteredName,
-            // date: new Date(enteredDate),
-            date: "10.10.2022"
+            date: new Date(enteredDate).toDateString(),
+            place:enteredPlace
+            // date: "10.10.2022"
         }
         Axios.post("https://lostnfound-api-backend.onrender.com/api/v1/expenses",
             new_expense
@@ -39,7 +42,7 @@ const NewExpenseForm = (props) => {
         setEnteredDate('');
         setEnteredObj("");
         setEnteredName("");
-        
+        setEnteredPlace("");
     }
 
     return (
@@ -65,6 +68,10 @@ const NewExpenseForm = (props) => {
                 <div className="new-expense__control">
                     <label>Date</label>
                     <input type="date" min="2019-01-01" max="2025-01-01" value={enteredDate} onChange={onDateChangehandler}/>
+                </div>
+                <div className="new-expense__control">
+                    <label>Place</label>
+                    <input type="text" value={enteredPlace} onChange={onPlaceChangehandler}/>
                 </div>
             </div>
             <div className="new-expense__actions">

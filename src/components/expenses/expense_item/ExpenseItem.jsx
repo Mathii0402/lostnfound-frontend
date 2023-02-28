@@ -7,7 +7,7 @@ const ExpenseItem = (props = {}) => {
     // const date = new Date(2023, 2, 30).toISOString();
     // const expense = 'March month spending';
     // const amount_spend = 245;
-    const { date, title, amount,name,desc } = props;
+    const { date, title, amount,name,desc,place} = props;
 
     // const  [title, setTitle] = useState(expense);
     // const clickHandler = () => {
@@ -43,6 +43,10 @@ const ExpenseItem = (props = {}) => {
             <div className="inline">
                 <div><label htmlFor="">Mobile Number:</label></div>
                 <div><h2> {amount} </h2></div>
+            </div>
+            <div className="inline">
+                <div><label htmlFor="">Mobile Number:</label></div>
+                <div><h2> {place} </h2></div>
             </div>
 
               

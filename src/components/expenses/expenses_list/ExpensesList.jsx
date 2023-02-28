@@ -18,6 +18,7 @@ const ExpensesList = (props) => {
                     <h2>About Object</h2>
                     <h2>Date of Lost</h2>
                     <h2>Mobile Number</h2>
+                    <h2>Place</h2>
                   </div>
             {
                 items.map(each_expense => (
@@ -28,6 +29,7 @@ const ExpensesList = (props) => {
                         amount={each_expense.amount}
                         desc ={each_expense.desc}
                         name = {each_expense.name}
+                        place = {each_expense.place}
                     />
                 ))
             }
