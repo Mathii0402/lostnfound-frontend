@@ -6,7 +6,7 @@ const ExpensesList = (props) => {
   const {items} = props;
     if (items.length === 0 || !items) {
      return (
-        <h2 className="expenses-list__fallback">No expenses found.</h2>
+        <h2 className="expenses-list__fallback">🔎</h2>
      );
     }
 

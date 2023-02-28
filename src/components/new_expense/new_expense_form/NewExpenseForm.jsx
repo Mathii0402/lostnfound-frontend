@@ -51,27 +51,27 @@ const NewExpenseForm = (props) => {
            
                 <div className="new-expense__control">
                     <label>Lost Object</label>
-                    <input type="text" value ={enteredObj} onChange={onObjChangehandler}/>
+                    <input type="text" required value ={enteredObj} onChange={onObjChangehandler}/>
                 </div>
                 <div className="new-expense__control">
                     <label>Name</label>
-                    <input type="text" value ={enteredName} onChange={onNameChangehandler}/>
+                    <input type="text" required value ={enteredName} onChange={onNameChangehandler}/>
                 </div>
                 <div className="new-expense__control">
                     <label>Description</label>
-                    <input type="text" placeholder="describe about the object" value ={enteredTitle} onChange={onTitleChangehandler}/>
+                    <input type="text" required placeholder="describe about the object" value ={enteredTitle} onChange={onTitleChangehandler}/>
                 </div>
                 <div className="new-expense__control">
                     <label>Mobile Number</label>
-                    <input type="number" min="0" value={enteredAmount} onChange={onAmounChangehandler} />
+                    <input type="number"  max="9999999999" required min="0" value={enteredAmount} onChange={onAmounChangehandler} />
                 </div>
                 <div className="new-expense__control">
                     <label>Date</label>
-                    <input type="date" min="2019-01-01" max="2025-01-01" value={enteredDate} onChange={onDateChangehandler}/>
+                    <input type="date" required min="2019-01-01" max="2025-01-01" value={enteredDate} onChange={onDateChangehandler}/>
                 </div>
                 <div className="new-expense__control">
                     <label>Place</label>
-                    <input type="text" value={enteredPlace} onChange={onPlaceChangehandler}/>
+                    <input type="text" required value={enteredPlace} onChange={onPlaceChangehandler}/>
                 </div>
             </div>
             <div className="new-expense__actions">
