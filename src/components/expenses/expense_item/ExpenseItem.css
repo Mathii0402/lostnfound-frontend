@@ -23,7 +23,7 @@ border: 1px solid rgba(59, 58, 58, 0.07);
   }
   .inline
   {
-    width:120px;
+    width:320px;
     text-align:end;
     
   }
@@ -98,18 +98,18 @@ font-size: 10px;
     padding: 0.5rem;
     border-radius: 12px;
   }
-  @media (max-width: 580px) {
+  @media (max-width: 980px) {
     .expense-item{
     
       flex-direction: column;
       /* align-items: center; */
       /* justify-content: flex-start; */
       flex: 1;
-      height: 12pc; 
+      height: 19pc; 
     }
     .expense-item:hover
     {
-      height: 11pc;
+      height: 20pc;
       font-size: larger;
     }
 
@@ -120,7 +120,11 @@ font-size: 10px;
    .inline{
     display: flex;
     
+    
 
+  }
+  .butt{
+    size:2px;
   }
     .expense-item-1
     {
@@ -128,8 +132,9 @@ font-size: 10px;
     }
   }
   
-  @media (min-width: 580px) {
-    .expense-item__description {
+  @media (min-width: 980px) {
+    .expense-item {
+      display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;

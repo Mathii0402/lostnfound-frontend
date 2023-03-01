@@ -1,14 +1,30 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import TextField from '@mui/material/TextField';
-import { useState } from 'react';
-import Axios from 'axios';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import TextField from "@mui/material/TextField";
+import { useState } from "react";
+import Axios from "axios";
+import "./Founddialogue.css";
+import { styled } from '@mui/material/styles';
+
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 export default function AlertDialog() {
+  const HtmlTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+  }));
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
 
@@ -18,49 +34,57 @@ export default function AlertDialog() {
   const handleClickOpen2 = () => {
     setOpen2(true);
     setOpen(false);
-
   };
   const handleClose = () => {
     setOpen(false);
-    setOpen2(false)
+    setOpen2(false);
   };
 
-    const [enteredName, setEnteredName] = useState('');
-    const [enteredNumber, setEnteredNumber] = useState('');
-    const [enteredPlace, setEnteredPlace] = useState('');
-    const [enteredAddress, setEnteredAddress] = useState('');
-   
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredNumber, setEnteredNumber] = useState("");
+  const [enteredPlace, setEnteredPlace] = useState("");
+  const [enteredAddress, setEnteredAddress] = useState("");
 
-    const onNameChangehandler = (event) => setEnteredName(event.target.value);
-    const onNumberChangehandler = (event) => setEnteredNumber(event.target.value);
-    const onPlaceChangehandler = (event) => setEnteredPlace(event.target.value);
-    const onAddressChangehandler = (event) => setEnteredAddress(event.target.value);
+const [color,setColor]=useState();
+const [text,setText]=useState('Found?🔎');
+  const onNameChangehandler = (event) => setEnteredName(event.target.value);
+  const onNumberChangehandler = (event) => setEnteredNumber(event.target.value);
+  const onPlaceChangehandler = (event) => setEnteredPlace(event.target.value);
+  const onAddressChangehandler = (event) =>
+    setEnteredAddress(event.target.value);
 
+  const onFormSubmit = (event) => {
+    event.preventDefault();
 
-    const onFormSubmit = (event) => { 
-        event.preventDefault();
-       
-        const found_details= {
-            name: enteredName,
-            number: enteredNumber,
-            place:enteredPlace,
-            address:enteredAddress
-        }
-        Axios.post("https://lostnfound-api-backend.onrender.com/api/v1/found",
-            found_details
+    const found_details = {
+      name: enteredName,
+      number: enteredNumber,
+      place: enteredPlace,
+      address: enteredAddress,
+    };
+    Axios.post(
+      "https://lostnfound-api-backend.onrender.com/api/v1/found",
+      found_details
     )
-        .then(res=>console.log("posted",res)).catch(err=> console.log("errorr",err));
-        setEnteredName("");
-        setEnteredAddress("");
-        setEnteredPlace("");
-        setEnteredNumber("");
+      .then((res) => console.log("posted", res))
+      .catch((err) => console.log("errorr", err));
+    setEnteredName("");
+    setEnteredAddress("");
+    setEnteredPlace("");
+    setEnteredNumber("");
     setOpen2(false);
-      }
+    setColor("green");setText("Founded !")
+    var btn = document.getElementById('btnn');
+    btn.disabled=true
+  };
   return (
-    <div>
+    <>
+      <div class="found">
+        {" "}
+  
+        <button id="btnn" style={{background:color}}  onClick={handleClickOpen}>{text}</button>
+      </div>
 
-            <button onClick={handleClickOpen}>Found? 🔎</button>
-       
       <Dialog
         open={open}
         onClose={handleClose}
@@ -71,9 +95,7 @@ export default function AlertDialog() {
           {"Have you found this object"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            
-          </DialogContentText>
+          <DialogContentText id="alert-dialog-description"></DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
@@ -89,33 +111,59 @@ export default function AlertDialog() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title" >
-          {"Details"}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Details"}</DialogTitle>
         <DialogContent>
-          <DialogContentText  id="alert-dialog-description">
-          <TextField value={enteredName} onChange={onNameChangehandler}
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Name"
-            type="text"
-            fullWidth
-            variant="standard"
-          />
-        <TextField margin="dense" value={enteredNumber} onChange={onNumberChangehandler} fullWidth id="number" label="Mobile number" type="number" varient="standard"/>
-        <TextField margin="dense" value={enteredPlace} onChange={onPlaceChangehandler} fullWidth id="placefound" label="Place of Found" type="text" varient="standard"/>
-        <TextField margin="dense" value={enteredAddress} onChange={onAddressChangehandler} fullWidth id="address" label="Address" type="text" varient="standard"/>
+          <DialogContentText id="alert-dialog-description">
+            <TextField
+              value={enteredName}
+              onChange={onNameChangehandler}
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Name"
+              type="text"
+              fullWidth
+              variant="standard"
+            />
+            <TextField
+              margin="dense"
+              value={enteredNumber}
+              onChange={onNumberChangehandler}
+              fullWidth
+              id="number"
+              label="Mobile number"
+              type="number"
+              varient="standard"
+            />
+            <TextField
+              margin="dense"
+              value={enteredPlace}
+              onChange={onPlaceChangehandler}
+              fullWidth
+              id="placefound"
+              label="Place of Found"
+              type="text"
+              varient="standard"
+            />
+            <TextField
+              margin="dense"
+              value={enteredAddress}
+              onChange={onAddressChangehandler}
+              fullWidth
+              id="address"
+              label="Address"
+              type="text"
+              varient="standard"
+            />
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
           <Button onClick={onFormSubmit} autoFocus>
-                Submit
+            Submit
           </Button>
         </DialogActions>
       </Dialog>
- 
-    </div>
+    </>
   );
 }

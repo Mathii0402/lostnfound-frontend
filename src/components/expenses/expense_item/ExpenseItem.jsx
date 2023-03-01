@@ -4,7 +4,10 @@ import './ExpenseItem.css';
 import ExpenseDate from "../expense_date/ExpenseDate";
 import Card from "../../ui/Card";
 import AlertDialog from "../../founddialogue/Founddialogue";
-
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography'
 const ExpenseItem = (props = {}) => {
    console.log(props);
     // const date = new Date(2023, 2, 30).toISOString();
@@ -18,13 +21,30 @@ const ExpenseItem = (props = {}) => {
        
        // console.log(title, expense);
     };
-
+    const HtmlTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }} />
+      ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+          backgroundColor: '#f5f5f9',
+          color: 'rgba(0, 0, 0, 0.87)',
+          maxWidth: 220,
+          fontSize: theme.typography.pxToRem(12),
+          border: '1px solid #dadde9',
+        },
+      }));
    return (
-    
+        
        <Card >
-
-           {/* <ExpenseDate  date={date} /> */}
-           <div className="expense-item">
+  <HtmlTooltip
+        title={
+          <React.Fragment>
+            <Typography color="inherit">Tooltip with HTML</Typography>
+            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+            {"It's very engaging. Right?"}
+          </React.Fragment>
+        }
+      >
+    <div className="expense-item">
             <div className="inline">
                 <div className="">
                     <label htmlFor="">Name:</label>
@@ -59,6 +79,9 @@ const ExpenseItem = (props = {}) => {
 
            </div>
            
+      </HtmlTooltip>
+           {/* <ExpenseDate  date={date} /> */}
+         
        </Card>
    )
 }
