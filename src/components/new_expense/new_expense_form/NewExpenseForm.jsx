@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import './NewExpenseForm.css';
 import Axios from "axios";
 
+
 const NewExpenseForm = (props) => {
+
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -22,6 +24,7 @@ const NewExpenseForm = (props) => {
         event.preventDefault();
        
         const new_expense = {
+
             title: enteredTitle,
             amount: enteredAmount,
             desc:enteredObj,

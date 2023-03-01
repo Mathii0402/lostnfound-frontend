@@ -37,7 +37,6 @@ import svg from "./components/img/icon.svg"
         expense.name = new_expense.name;
         expense.desc = new_expense.desc;
         expense.place = new_expense.place;
-        
         setExpenses((prev) =>{
           return [expense,...prev];
         });

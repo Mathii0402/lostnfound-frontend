@@ -13,8 +13,8 @@ const ExpenseItem = (props = {}) => {
     // const date = new Date(2023, 2, 30).toISOString();
     // const expense = 'March month spending';
     // const amount_spend = 245;
-    const { date, title, amount,name,desc,place} = props;
-    
+    const { date, title, amount,name,desc,place,objid} = props;
+    console.log("hiiii",objid)
      const  [find, setFind] = useState(false);
     const clickHandler = () => {
        setFind('found');
@@ -51,6 +51,10 @@ const ExpenseItem = (props = {}) => {
                 </div>
                 <div>
                 <h2>{name}</h2></div>
+            </div>
+            <div className="inline">
+                <div><label htmlFor="">Obj Id:</label></div>
+                <div><h2> {objid} </h2></div>
             </div>
             <div className="inline">
                 <div><label htmlFor="">Lost object:</label></div>

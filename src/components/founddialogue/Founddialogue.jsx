@@ -44,20 +44,24 @@ export default function AlertDialog() {
   const [enteredNumber, setEnteredNumber] = useState("");
   const [enteredPlace, setEnteredPlace] = useState("");
   const [enteredAddress, setEnteredAddress] = useState("");
-
+  const [enteredObjId, setEnteredObjId] = useState('');
 const [color,setColor]=useState();
 const [text,setText]=useState('Found?🔎');
   const onNameChangehandler = (event) => setEnteredName(event.target.value);
   const onNumberChangehandler = (event) => setEnteredNumber(event.target.value);
   const onPlaceChangehandler = (event) => setEnteredPlace(event.target.value);
-  const onAddressChangehandler = (event) =>
-    setEnteredAddress(event.target.value);
+  const onAddressChangehandler = (event) =>setEnteredAddress(event.target.value);
+  const onObjIdChangehandler = (event) =>setEnteredObjId(event.target.value);
+   
+   
+
 
   const onFormSubmit = (event) => {
     event.preventDefault();
 
     const found_details = {
       name: enteredName,
+      objid: enteredObjId,
       number: enteredNumber,
       place: enteredPlace,
       address: enteredAddress,
@@ -72,6 +76,7 @@ const [text,setText]=useState('Found?🔎');
     setEnteredAddress("");
     setEnteredPlace("");
     setEnteredNumber("");
+    setEnteredObjId("");
     setOpen2(false);
     setColor("green");setText("Founded !")
     var btn = document.getElementById('btnn');
@@ -113,48 +118,21 @@ const [text,setText]=useState('Found?🔎');
       >
         <DialogTitle id="alert-dialog-title">{"Details"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            <TextField
-              value={enteredName}
-              onChange={onNameChangehandler}
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Name"
-              type="text"
-              fullWidth
-              variant="standard"
-            />
-            <TextField
-              margin="dense"
-              value={enteredNumber}
-              onChange={onNumberChangehandler}
-              fullWidth
-              id="number"
-              label="Mobile number"
-              type="number"
-              varient="standard"
-            />
-            <TextField
-              margin="dense"
-              value={enteredPlace}
-              onChange={onPlaceChangehandler}
-              fullWidth
-              id="placefound"
-              label="Place of Found"
-              type="text"
-              varient="standard"
-            />
-            <TextField
-              margin="dense"
-              value={enteredAddress}
-              onChange={onAddressChangehandler}
-              fullWidth
-              id="address"
-              label="Address"
-              type="text"
-              varient="standard"
-            />
+          <DialogContentText  id="alert-dialog-description">
+          <TextField value={enteredName} onChange={onNameChangehandler}
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Name"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField margin="dense" value={enteredObjId} onChange={onObjIdChangehandler} fullWidth id="objid" label="Lost Object Id" type="text" varient="standard"/>
+        <TextField margin="dense" value={enteredNumber} onChange={onNumberChangehandler} fullWidth id="number" label="Mobile number" type="number" varient="standard"/>
+        
+        <TextField margin="dense" value={enteredPlace} onChange={onPlaceChangehandler} fullWidth id="placefound" label="Place of Found" type="text" varient="standard"/>
+        <TextField margin="dense" value={enteredAddress} onChange={onAddressChangehandler} fullWidth id="address" label="Address" type="text" varient="standard"/>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
