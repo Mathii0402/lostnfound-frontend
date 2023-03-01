@@ -1,7 +1,10 @@
 import React, { useState } from "react"
+
 import './ExpenseItem.css';
 import ExpenseDate from "../expense_date/ExpenseDate";
 import Card from "../../ui/Card";
+import AlertDialog from "../../founddialogue/Founddialogue";
+
 const ExpenseItem = (props = {}) => {
    console.log(props);
     // const date = new Date(2023, 2, 30).toISOString();
@@ -12,6 +15,7 @@ const ExpenseItem = (props = {}) => {
      const  [find, setFind] = useState(false);
     const clickHandler = () => {
        setFind('found');
+       
        // console.log(title, expense);
     };
 
@@ -49,9 +53,10 @@ const ExpenseItem = (props = {}) => {
                 <div><h2> {place} </h2></div>
             </div >
             <div className="inline">
-            <button onClick={clickHandler}>Found? 🔎</button>
+        <AlertDialog/>
+          
             </div>
-            
+
            </div>
            
        </Card>
