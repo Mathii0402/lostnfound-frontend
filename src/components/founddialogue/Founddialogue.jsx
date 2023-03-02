@@ -72,6 +72,15 @@ const [text,setText]=useState('Found?🔎');
     )
       .then((res) => console.log("posted", res))
       .catch((err) => console.log("errorr", err));
+      Axios.get(`http://localhost:3002/api/v1/object/${found_details.objid}`)
+      .then((res)=>{
+        return res;
+      })
+      .then((data)=>{
+        // this.setState({data:data})
+        console.log("mathisss",data);
+
+      });
     setEnteredName("");
     setEnteredAddress("");
     setEnteredPlace("");
