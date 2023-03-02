@@ -13,7 +13,7 @@ import { styled } from '@mui/material/styles';
 
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-export default function AlertDialog() {
+export default function AlertDialog(props) {
   const HtmlTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -45,8 +45,8 @@ export default function AlertDialog() {
   const [enteredPlace, setEnteredPlace] = useState("");
   const [enteredAddress, setEnteredAddress] = useState("");
   const [enteredObjId, setEnteredObjId] = useState('');
-const [color,setColor]=useState();
-const [text,setText]=useState('Found?🔎');
+
+
   const onNameChangehandler = (event) => setEnteredName(event.target.value);
   const onNumberChangehandler = (event) => setEnteredNumber(event.target.value);
   const onPlaceChangehandler = (event) => setEnteredPlace(event.target.value);
@@ -72,31 +72,23 @@ const [text,setText]=useState('Found?🔎');
     )
       .then((res) => console.log("posted", res))
       .catch((err) => console.log("errorr", err));
-      Axios.get(`http://localhost:3002/api/v1/object/${found_details.objid}`)
-      .then((res)=>{
-        return res;
-      })
-      .then((data)=>{
-        // this.setState({data:data})
-        console.log("mathisss",data);
 
-      });
     setEnteredName("");
     setEnteredAddress("");
     setEnteredPlace("");
     setEnteredNumber("");
     setEnteredObjId("");
     setOpen2(false);
-    setColor("green");setText("Founded !")
-    var btn = document.getElementById('btnn');
-    btn.disabled=true
+  
+   
   };
+  
   return (
     <>
       <div class="found">
         {" "}
   
-        <button id="btnn" style={{background:color}}  onClick={handleClickOpen}>{text}</button>
+        <button id="btnn" style={{background:props.color}} disabled={props.disabled} onClick={handleClickOpen}>{props.text}</button>
       </div>
 
       <Dialog
