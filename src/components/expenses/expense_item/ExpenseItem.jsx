@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Axios from "axios";
 import "./ExpenseItem.css";
-
+import emailjs from '@emailjs/browser';
 import Card from "../../ui/Card";
 import AlertDialog from "../../founddialogue/Founddialogue";
 import { styled } from "@mui/material/styles";
@@ -20,6 +20,7 @@ const ExpenseItem = (props = {}) => {
   const clickHandler = () => {
     setFind("found");
   };
+  const form = useRef();
   const apicall = () => {
     Axios.get(
       `https://lostnfound-api-backend.onrender.com/api/v1/object/${objid}`
@@ -28,9 +29,11 @@ const ExpenseItem = (props = {}) => {
       if (oid == objid) {
         setColor("green");
         setText("Founded !");
-
+        
         let ans = res.data.data[0];
-
+        console.log("num",amount)
+  
+        
         setdatas(ans);
         setdisable(true);
         setstyling("content");
@@ -65,7 +68,7 @@ const ExpenseItem = (props = {}) => {
  
             <h3>Object Founded Person's Details</h3>
             <p>Name:{datas.name}</p>
-            <p>Mobile Number:{datas.number}</p>
+            <p>Email:{datas.number}</p>
             <p>Place:{datas.place}</p>
             <p>Address:{datas.address}</p>
           </React.Fragment>
@@ -114,7 +117,7 @@ const ExpenseItem = (props = {}) => {
           </div>
           <div className="inline">
             <div>
-              <label htmlFor="">Mobile Number:</label>
+              <label>Email:</label>
             </div>
             <div>
               <h2> {amount} </h2>

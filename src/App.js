@@ -3,6 +3,7 @@ import './App.css';
 import Expenses from './components/expenses/Expenses';
 import NewExpense from './components/new_expense/NewExpense';
 import svg from "./components/img/icon.svg"
+import { ContactUs } from './components/email/Email';
 
 
 
@@ -41,6 +42,7 @@ import svg from "./components/img/icon.svg"
           return [expense,...prev];
         });
         console.log(expense)
+        console.log("wd",expense.amount)
       }
        console.log("boobes",lost)
        console.log("ss",expenses)

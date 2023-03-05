@@ -19,7 +19,7 @@ const ExpensesList = (props) => {
                     <h2>Lost Object</h2>
                     <h2>About Object</h2>
                     <h2>Date of Lost</h2>
-                    <h2>Mobile Number</h2>
+                    <h2>Email</h2>
                     <h2>Place</h2>
                     <h2>Status</h2>
                   </div>

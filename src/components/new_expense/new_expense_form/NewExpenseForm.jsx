@@ -65,8 +65,8 @@ const NewExpenseForm = (props) => {
                     <input type="text" required placeholder="describe about the object" value ={enteredTitle} onChange={onTitleChangehandler}/>
                 </div>
                 <div className="new-expense__control">
-                    <label>Mobile Number</label>
-                    <input type="number"  max="9999999999" required min="0" value={enteredAmount} onChange={onAmounChangehandler} />
+                    <label>Email</label>
+                    <input type="email"  value={enteredAmount} onChange={onAmounChangehandler} />
                 </div>
                 <div className="new-expense__control">
                     <label>Date</label>

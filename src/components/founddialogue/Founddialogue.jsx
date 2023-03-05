@@ -7,6 +7,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 import Axios from "axios";
 import "./Founddialogue.css";
 
@@ -38,7 +39,7 @@ export default function AlertDialog(props) {
   const onAddressChangehandler = (event) =>
     setEnteredAddress(event.target.value);
   const onObjIdChangehandler = (event) => setEnteredObjId(event.target.value);
-
+    
   const onFormSubmit = (event) => {
     event.preventDefault();
 
@@ -49,6 +50,31 @@ export default function AlertDialog(props) {
       place: enteredPlace,
       address: enteredAddress,
     };
+
+    Axios.get(`http://localhost:3002/api/v1/lostobject/${found_details.objid}`)
+    .then((res) => {
+      console.log("res",res.data.data[0].amount)
+      var templateParams = {
+        user_email: res.data.data[0].amount,
+        username:res.data.data[0].name,
+        obj :res.data.data[0].title,
+        founder_name:found_details.name,
+        founder_email: found_details.number,
+        founded_place :found_details.place,
+        founder_address: found_details.address
+    };
+     
+      emailjs.send('service_ai49bld', 'template_5q6zwpb', templateParams,"kB6MCWIY_rkSoYDcE")
+      .then(function(response) {
+         console.log('SUCCESS!', response.status, response.text);
+      }, function(error) {
+         console.log('FAILED...', error);
+      });
+  
+    });
+  
+ 
+
     Axios.post(
       "https://lostnfound-api-backend.onrender.com/api/v1/found",
       found_details
@@ -151,13 +177,13 @@ export default function AlertDialog(props) {
                 />
               </div>
               <div className="new-expense__control">
-                <label>Phone Number</label>
+                <label>Email</label>
                 <input
                   value={enteredNumber}
                   onChange={onNumberChangehandler}
                   id="number"
                   label="Mobile number"
-                  type="number"
+                  type="email" 
                 />
               </div>
               <div className="new-expense__control">
