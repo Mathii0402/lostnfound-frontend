@@ -3,7 +3,7 @@ import './App.css';
 import Expenses from './components/expenses/Expenses';
 import NewExpense from './components/new_expense/NewExpense';
 import svg from "./components/img/icon.svg"
-import { ContactUs } from './components/email/Email';
+
 
 
 

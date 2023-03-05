@@ -51,7 +51,7 @@ export default function AlertDialog(props) {
       address: enteredAddress,
     };
 
-    Axios.get(`http://localhost:3002/api/v1/lostobject/${found_details.objid}`)
+    Axios.get(`https:/lostnfound-api-backend.onrender.com/api/v1/lostobject/${found_details.objid}`)
     .then((res) => {
       console.log("res",res.data.data[0].amount)
       var templateParams = {
@@ -64,7 +64,7 @@ export default function AlertDialog(props) {
         founder_address: found_details.address
     };
      
-      emailjs.send('service_ai49bld', 'template_5q6zwpb', templateParams,"kB6MCWIY_rkSoYDcE")
+      emailjs.send('service_0bhv93p', 'template_5q6zwpb', templateParams,"kB6MCWIY_rkSoYDcE")
       .then(function(response) {
          console.log('SUCCESS!', response.status, response.text);
       }, function(error) {
