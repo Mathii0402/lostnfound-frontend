@@ -67,10 +67,10 @@ export default function AlertDialog(props) {
 
       emailjs
         .send(
-          "service_0bhv93p",
-          "template_5q6zwpb",
+          "service_27zrxo7",
+          "template_r5opfue",
           templateParams,
-          "kB6MCWIY_rkSoYDcE"
+          "IZehAHoRJq1CdICT_"
         )
         .then(
           function (response) {
