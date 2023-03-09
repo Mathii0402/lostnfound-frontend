@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './NewExpenseForm.css';
+import './NewLostsForm.css';
 import Axios from "axios";
 
 
@@ -39,7 +39,7 @@ const NewExpenseForm = (props) => {
         .then(res=>console.log("posted",res)).catch(err=> console.log("errorr",err));
     
         props.onSave(new_expense);
-        console.log('new_expense', new_expense);
+       
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
@@ -50,34 +50,34 @@ const NewExpenseForm = (props) => {
 
     return (
         <form onSubmit={onFormSubmit}>
-            <div className="new-expense__controls">
+            <div className="new-losts__controls">
            
-                <div className="new-expense__control">
+                <div className="new-losts__control">
                     <label>Lost Object</label>
                     <input type="text" required value ={enteredObj} onChange={onObjChangehandler}/>
                 </div>
-                <div className="new-expense__control">
+                <div className="new-losts__control">
                     <label>Name</label>
                     <input type="text" required value ={enteredName} onChange={onNameChangehandler}/>
                 </div>
-                <div className="new-expense__control">
+                <div className="new-losts__control">
                     <label>Description</label>
                     <input type="text" required placeholder="describe about the object" value ={enteredTitle} onChange={onTitleChangehandler}/>
                 </div>
-                <div className="new-expense__control">
+                <div className="new-losts__control">
                     <label>Email</label>
                     <input type="email"  value={enteredAmount} onChange={onAmounChangehandler} />
                 </div>
-                <div className="new-expense__control">
+                <div className="new-losts__control">
                     <label>Date</label>
                     <input type="date" required min="2019-01-01" max="2025-01-01" value={enteredDate} onChange={onDateChangehandler}/>
                 </div>
-                <div className="new-expense__control">
+                <div className="new-losts__control">
                     <label>Place</label>
                     <input type="text" required value={enteredPlace} onChange={onPlaceChangehandler}/>
                 </div>
             </div>
-            <div className="new-expense__actions">
+            <div className="new-losts__actions">
                 <button onClick={props.onCancel}>Cancel</button>
                 <button type="submit">Add Lost Items</button>
             </div>

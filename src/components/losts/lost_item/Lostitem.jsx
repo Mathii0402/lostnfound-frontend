@@ -1,6 +1,6 @@
 import React, { useState,useRef } from "react";
 import Axios from "axios";
-import "./ExpenseItem.css";
+import "./LostItem.css";
 
 import Card from "../../ui/Card";
 import AlertDialog from "../../founddialogue/Founddialogue";
@@ -9,18 +9,14 @@ import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
-const ExpenseItem = (props = {}) => {
-  console.log(props);
+const Lostitem = (props = {}) => {
+
   const [color, setColor] = useState();
   const [text, setText] = useState("Found?🔎");
   const [styling, setstyling] = useState("none");
   const [disable, setdisable] = useState(false);
   const { date, title, amount, name, desc, place, objid } = props;
-  const [find, setFind] = useState(false);
-  const clickHandler = () => {
-    setFind("found");
-  };
-  const form = useRef();
+  const [datas, setdatas] = useState({});
   const apicall = () => {
     Axios.get(
       `https://lostnfound-api-backend.onrender.com/api/v1/object/${objid}`
@@ -31,8 +27,7 @@ const ExpenseItem = (props = {}) => {
         setText("Founded !");
         
         let ans = res.data.data[0];
-        console.log("num",amount)
-  
+      
         
         setdatas(ans);
         setdisable(true);
@@ -40,7 +35,7 @@ const ExpenseItem = (props = {}) => {
       }
     });
   };
-  const [datas, setdatas] = useState({});
+
 
   const HtmlTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -74,7 +69,7 @@ const ExpenseItem = (props = {}) => {
           </React.Fragment>
         }
       >
-        <div className="expense-item">
+        <div className="lost-item">
           <div className="inline">
             <div className="">
               <label htmlFor="">Name:</label>
@@ -140,4 +135,4 @@ const ExpenseItem = (props = {}) => {
   );
 };
 
-export default ExpenseItem;
+export default Lostitem;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import NewExpenseForm from "./new_expense_form/NewExpenseForm";
-import './NewExpense.css';
+import NewExpenseForm from "./new_expense_form/NewLostsForm";
+import './NewLosts.css';
 
-const NewExpense = (props) => {
+const NewLosts = (props) => {
     const [isEditing, setIsEditing] = useState(false);
 
     const startEditing = () => setIsEditing(true);
@@ -17,11 +17,11 @@ const NewExpense = (props) => {
       props.onAddNewExpense(new_expense_data);
     }
     return (
-        <div className="new-expense">
+        <div className="new-losts">
             {!isEditing && <button onClick={startEditing}>Add Lost</button>}
             {isEditing && <NewExpenseForm  onSave={onSaveNewExpense} onCancel={stopEditing}/>}
         </div>
     );
 }
 
-export default NewExpense;
+export default NewLosts;

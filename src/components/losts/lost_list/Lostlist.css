@@ -1,10 +1,10 @@
-.expenses-list {
+.lost_list {
     list-style: none;
     padding: 0;
 
   }
   
-  .expenses-list__fallback {
+  .lost_list__fallback {
     color: white;
     text-align: center;
   }
@@ -12,7 +12,7 @@
     width: 65px;
     height: 65px;
   }
-  .expense-item
+  .lost-item
   {
     display: flex;
     /* align-content: space-around; */
