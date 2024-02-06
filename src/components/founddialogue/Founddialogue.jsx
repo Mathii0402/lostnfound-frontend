@@ -120,7 +120,7 @@ export default function AlertDialog(props) {
           style: {
             backgroundColor: "#706F6F",
             color: "white",
-
+            
             borderRadius: 20,
           },
         }}
@@ -151,7 +151,7 @@ export default function AlertDialog(props) {
           style: {
             backgroundColor: "#706F6F",
             color: "white",
-            width: "400px",
+            width: "550px",
 
             borderRadius: 20,
           },
