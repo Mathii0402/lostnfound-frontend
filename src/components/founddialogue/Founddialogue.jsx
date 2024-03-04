@@ -42,7 +42,7 @@ export default function AlertDialog(props) {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
+    
     const found_details = {
       name: enteredName,
       objid: enteredObjId,
@@ -65,12 +65,18 @@ export default function AlertDialog(props) {
         founder_address: found_details.address,
       };
 
+      
+          
+     
+
+
       emailjs
         .send(
-          "service_27zrxo7",
-          "template_r5opfue",
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_TEMPLATE_ID,
           templateParams,
-          "IZehAHoRJq1CdICT_"
+          process.env.REACT_APP_PUBLIC_KEY,
+          
         )
         .then(
           function (response) {
@@ -95,7 +101,7 @@ export default function AlertDialog(props) {
     setEnteredNumber("");
     setEnteredObjId("");
     setOpen2(false);
-  };
+    };
 
   return (
     <>
