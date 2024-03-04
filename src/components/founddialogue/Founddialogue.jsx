@@ -65,11 +65,6 @@ export default function AlertDialog(props) {
         founder_address: found_details.address,
       };
 
-      
-          
-     
-
-
       emailjs
         .send(
           process.env.REACT_APP_EMAILJS_SERVICE_ID,
