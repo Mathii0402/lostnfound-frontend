@@ -58,7 +58,7 @@ export default function AlertDialog(props) {
       var templateParams = {
         user_email: res.data.data[0].amount,
         username: res.data.data[0].name,
-        obj: res.data.data[0].title,
+        obj: res.data.data[0].desc,
         founder_name: found_details.name,
         founder_email: found_details.number,
         founded_place: found_details.place,
