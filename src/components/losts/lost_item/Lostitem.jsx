@@ -142,7 +142,7 @@ const Lostitem = (props = {}) => {
           <div>
               <label htmlFor="">Image:</label>
             </div>
-            <div >{ <img src={`http://localhost:3002/uploads/${image}`} style={{maxWidth:"150px" ,maxHeight:"80px"}} alt="" />}</div>
+            <div >{ <img src={`https://lostnfound-api-backend.onrender.com/uploads/${image}`} style={{maxWidth:"150px" ,maxHeight:"80px"}} alt="" />}</div>
             
           </div>
 

@@ -52,7 +52,7 @@ export default function AlertDialog(props) {
     };
 
     Axios.get(
-      `http://localhost:3002/api/v1/lostobject/${found_details.objid}`
+      `https://lostnfound-api-backend.onrender.com/api/v1/lostobject/${found_details.objid}`
     ).then((res) => {
      
       var templateParams = {
@@ -83,7 +83,7 @@ export default function AlertDialog(props) {
         );
     });
     Axios.post(
-      "http://localhost:3002/api/v1/found",
+      "https://lostnfound-api-backend.onrender.com/api/v1/found",
       found_details
     )
       .then((res) => console.log("posted", res))
