@@ -11,7 +11,7 @@ const NewExpenseForm = (props) => {
     const [enteredObj, setEnteredObj] = useState('');
     const [enteredName, setEnteredName] = useState('');
     const [enteredPlace, setEnteredPlace] = useState('');
-
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const onTitleChangehandler = (event) => setEnteredTitle(event.target.value);
     const onAmounChangehandler = (event) => setEnteredAmount(event.target.value);
@@ -19,10 +19,15 @@ const NewExpenseForm = (props) => {
     const onObjChangehandler = (event) => setEnteredObj(event.target.value);
     const onNameChangehandler = (event) => setEnteredName(event.target.value);
     const onPlaceChangehandler = (event) => setEnteredPlace(event.target.value);
+    const onImageChangehandler = (event) => 
+    {
+        setSelectedImage(event.target.files[0]);
+        console.log(event.target.files[0]);
+    }
 
     const onFormSubmit = (event) => { 
         event.preventDefault();
-       
+       console.log(enteredObj);
         const new_expense = {
 
             title: enteredTitle,
@@ -30,14 +35,20 @@ const NewExpenseForm = (props) => {
             desc:enteredObj,
             name:enteredName,
             date: new Date(enteredDate).toDateString(),
-            place:enteredPlace
-            // date: "10.10.2022"
+            place:enteredPlace,
+            image:selectedImage
         }
+        
+    //     Axios.post("https://lostnfound-api-backend.onrender.com/api/v1/expenses",
+    //         new_expense
+    // )
+    //     .then(res=>console.log("posted",res)).catch(err=> console.log("cannot post",err));
         Axios.post("https://lostnfound-api-backend.onrender.com/api/v1/expenses",
-            new_expense
+            new_expense,{
+                headers:{"Content-Type":"multipart/form-data"},
+            }
     )
-        .then(res=>console.log("posted",res)).catch(err=> console.log("errorr",err));
-    
+        .then(res=>console.log("posted",res)).catch(err=> console.log("cannot post",err));
         props.onSave(new_expense);
        
         setEnteredTitle('');
@@ -46,6 +57,7 @@ const NewExpenseForm = (props) => {
         setEnteredObj("");
         setEnteredName("");
         setEnteredPlace("");
+        setSelectedImage("");
     }
 
     return (
@@ -75,6 +87,10 @@ const NewExpenseForm = (props) => {
                 <div className="new-losts__control">
                     <label>Place</label>
                     <input type="text" required value={enteredPlace} onChange={onPlaceChangehandler}/>
+                </div>
+                <div className="new-losts__control">
+                    <label>Image</label>
+                    <input type="file" accept="image/*" onChange={onImageChangehandler} />
                 </div>
             </div>
             <div className="new-losts__actions">

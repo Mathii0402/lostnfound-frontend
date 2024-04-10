@@ -4,10 +4,10 @@ import Lostlist from "./lost_list/LostList";
 
 const Losts = (props) => {
   const { expenses = [] } = props;
-
+  const decoded = props.userdata;
   return (
     <Card className="expenses">
-      <Lostlist items={expenses} />
+      <Lostlist items={expenses} userdata={decoded} />
     </Card>
   );
 };

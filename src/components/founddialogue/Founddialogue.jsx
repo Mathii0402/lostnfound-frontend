@@ -12,6 +12,7 @@ import Axios from "axios";
 import "./Founddialogue.css";
 
 export default function AlertDialog(props) {
+  const decoded = props.userdata;
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
 
@@ -34,10 +35,9 @@ export default function AlertDialog(props) {
   const [enteredObjId, setEnteredObjId] = useState("");
 
   const onNameChangehandler = (event) => setEnteredName(event.target.value);
-  const onNumberChangehandler = (event) => setEnteredNumber(event.target.value);
+  const onNumberChangehandler = (event) => setEnteredNumber(decoded);
   const onPlaceChangehandler = (event) => setEnteredPlace(event.target.value);
-  const onAddressChangehandler = (event) =>
-    setEnteredAddress(event.target.value);
+  const onAddressChangehandler = (event) => setEnteredAddress(event.target.value);
   const onObjIdChangehandler = (event) => setEnteredObjId(event.target.value);
 
   const onFormSubmit = (event) => {
@@ -52,7 +52,7 @@ export default function AlertDialog(props) {
     };
 
     Axios.get(
-      `https:/lostnfound-api-backend.onrender.com/api/v1/lostobject/${found_details.objid}`
+      `http://localhost:3002/api/v1/lostobject/${found_details.objid}`
     ).then((res) => {
      
       var templateParams = {
@@ -82,9 +82,8 @@ export default function AlertDialog(props) {
           }
         );
     });
-
     Axios.post(
-      "https://lostnfound-api-backend.onrender.com/api/v1/found",
+      "http://localhost:3002/api/v1/found",
       found_details
     )
       .then((res) => console.log("posted", res))
@@ -100,7 +99,7 @@ export default function AlertDialog(props) {
 
   return (
     <>
-      <div class="found">
+      <div className="found">
         {" "}
         <button
           id="btnn"
@@ -133,7 +132,7 @@ export default function AlertDialog(props) {
           <DialogContentText id="alert-dialog-description"></DialogContentText>
         </DialogContent>
         <DialogActions>
-          <div class="found">
+          <div className="found">
             {" "}
             <button onClick={handleClose}>Close</button>
             <button onClick={handleClickOpen2} autoFocus>
@@ -187,11 +186,12 @@ export default function AlertDialog(props) {
               <div className="new-losts__control">
                 <label>Email</label>
                 <input
-                  value={enteredNumber}
+                  value={decoded?decoded?.email:"h"}
                   onChange={onNumberChangehandler}
                   id="number"
                   label="Mobile number"
                   type="email"
+                  readOnly
                 />
               </div>
               <div className="new-losts__control">
@@ -220,7 +220,7 @@ export default function AlertDialog(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <div class="found">
+          <div className="found">
             {" "}
             <button onClick={handleClose}>Close</button>
             <button onClick={onFormSubmit} autoFocus>

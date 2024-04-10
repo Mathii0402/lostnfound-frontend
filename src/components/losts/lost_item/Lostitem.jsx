@@ -9,17 +9,28 @@ import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
-const Lostitem = (props = {}) => {
 
+const Lostitem = (props = {}) => {
+  const decoded = props.userdata;
   const [color, setColor] = useState();
   const [text, setText] = useState("Found?🔎");
   const [styling, setstyling] = useState("none");
   const [disable, setdisable] = useState(false);
-  const { date, title, amount, name, desc, place, objid } = props;
+  const { date, title, amount, name, desc, place, objid,image } = props;
   const [datas, setdatas] = useState({});
+  const [showImage,setShowImage] = useState(false);
+
+
+  const toggleImage= () =>
+  {
+      setShowImage(!showImage);
+  }
+
+
   const apicall = () => {
     Axios.get(
       `https://lostnfound-api-backend.onrender.com/api/v1/object/${objid}`
+
     ).then((res) => {
       const oid = res.data.data[0].objid;
       if (oid == objid) {
@@ -69,13 +80,13 @@ const Lostitem = (props = {}) => {
           </React.Fragment>
         }
       >
-        <div className="lost-item">
+        <div className="lost-item" onClick={toggleImage}>
           <div className="inline">
             <div className="">
               <label htmlFor="">Name:</label>
             </div>
             <div>
-              <h2>{name}</h2>
+              <h2> <pre>{name}</pre> </h2>
             </div>
           </div>
           <div className="inline">
@@ -83,7 +94,7 @@ const Lostitem = (props = {}) => {
               <label htmlFor="">Obj Id:</label>
             </div>
             <div>
-              <h2> {objid} </h2>
+              <h2> <pre>{objid}</pre> </h2>
             </div>
           </div>
           <div className="inline">
@@ -91,7 +102,8 @@ const Lostitem = (props = {}) => {
               <label htmlFor="">Lost object:</label>
             </div>
             <div>
-              <h2> {desc} </h2>
+              <h2> <pre>{desc}</pre> </h2>
+           
             </div>
           </div>
           <div className="inline">
@@ -99,23 +111,23 @@ const Lostitem = (props = {}) => {
               <label htmlFor="">Desc:</label>
             </div>
             <div>
-              <h2> {title} </h2>
+              <h2> <pre>{title}</pre> </h2>
             </div>
           </div>
-          <div className="inline">
+          {/* <div className="inline">
             <div>
               <label htmlFor="">Lost Date:</label>
             </div>
             <div>
               <h2> {date} </h2>
             </div>
-          </div>
+          </div> */}
           <div className="inline">
             <div>
               <label>Email:</label>
             </div>
             <div>
-              <h2> {amount} </h2>
+              <h2> <pre>{amount} </pre></h2>
             </div>
           </div>
           <div className="inline">
@@ -123,12 +135,22 @@ const Lostitem = (props = {}) => {
               <label htmlFor="">Place:</label>
             </div>
             <div>
-              <h2> {place} </h2>
+              <h2>  {place} </h2>
             </div>
           </div>
           <div className="inline">
-            <AlertDialog color={color} disabled={disable} text={text} />
+          <div>
+              <label htmlFor="">Image:</label>
+            </div>
+            <div >{ <img src={`http://localhost:3002/uploads/${image}`} style={{maxWidth:"150px" ,maxHeight:"80px"}} alt="" />}</div>
+            
           </div>
+
+          <div className="inline">
+            
+            <AlertDialog color={color} userdata={decoded} disabled={disable} text={text} />
+          </div>
+          
         </div>
       </HtmlTooltip>
     </Card>
